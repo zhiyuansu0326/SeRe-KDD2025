@@ -11,14 +11,23 @@ import numpy as np
 import sys
 import os
 import time
-from load_data import load_movielens_dif_user
+
+from load_data import (
+    load_movielens_dif_user,
+    load_kuai_dif_user,
+    load_yelp_dif_user,
+    load_fashion_dif_user,
+    load_dm_dif_user,
+    load_vg_dif_user,
+    load_facebook_dif_user,
+)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default="movie", type=str)
     parser.add_argument("--method", default="mcnb_sere", type=str)
     parser.add_argument("--n_runs", default=1, type=int)
-    parser.add_argument("--n_rounds", default=10000, type=int)
+    parser.add_argument("--n_rounds", default=50000, type=int)
     args = parser.parse_args()
     dataset = args.dataset.lower()
     method = args.method.lower()
@@ -27,8 +36,18 @@ if __name__ == "__main__":
     for run_i in range(n_runs):
         start_time = time.time()
         print(f"\n=== Start Run {run_i+1}/{n_runs} ===")
-        if dataset == "movielens":
+        if dataset == "movie":
             b = load_movielens_dif_user(100)
+        elif dataset == "kuairec":
+            b = load_kuai_dif_user(100)
+        elif dataset == "yelp":
+            b = load_yelp_dif_user(100)
+        elif dataset == "dm":
+            b = load_dm_dif_user(100)
+        elif dataset == "vg":
+            b = load_vg_dif_user(100)
+        elif dataset == "facebook":
+            b = load_facebook_dif_user(100)
         else:
             print("Dataset not supported.")
             sys.exit()
