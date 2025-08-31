@@ -23,16 +23,7 @@ This repository provides implementations of four Clustering of Neural Bandits (C
 
 ## Dataset
 
-This repository uses six datasets as an example. They are:
-
-- KuaiRec (kuairec)
-- Yelp (yelp)
-- MovieLens (movie)
-- Facebook (facebook)
-- Amazon - Video Games (vg)
-- Amazon - Digital Music (dm)
-
- The names in brackets are the parameter names corresponding to the dataset in the code.The data loading functions are provided in `load_data.py`.
+This repository uses MovieLens (movie) as an example.
 
 ## Running Experiments
 
@@ -46,14 +37,8 @@ To run model A on dataset B for C runs and D rounds per time, execute:
 python3 run.py --dataset "A" --method "B" --n_runs C --n_rounds D
 ```
 
-For example, to run CLUB_N on KuaiRec for 5 runs and 20000 rounds per time:
+For example, to run M-CNB_SeRe on MovieLens for 1 run and 50000 rounds per time::
 
 ```bash
-python3 run.py --dataset "kuairec" --method "club_n" --n_runs 5 --n_rounds 20000
-```
-
-To run M-CNB_SeRe on Amazon - Video Games for 1 runs and 50000 rounds per time::
-
-```bash
-python3 run.py --dataset "vg" --method "mcnb_sere" --n_runs 1 --n_rounds 50000
+python3 run.py --dataset "movie" --method "mcnb_sere" --n_runs 1 --n_rounds 50000
 ```
